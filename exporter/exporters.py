@@ -7,7 +7,7 @@ from scrapy.exporters import BaseItemExporter, CsvItemExporter
 from scrapy.utils.python import to_unicode
 
 
-class CsvFlatterItemExporter(BaseItemExporter):
+class CsvFlatteringItemExporter(BaseItemExporter):
 
     def __init__(self, file, item_schema, flattering_kwargs=None, **kwargs):
         super().__init__(dont_fail=True, **kwargs)

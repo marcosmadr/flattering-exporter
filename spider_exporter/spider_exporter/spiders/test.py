@@ -15,7 +15,8 @@ class TestSpider(scrapy.Spider):
                     'link': q.xpath('.//a/@href').get(),
                 },
                 'tags': [
-                    {_q.css('::text').get(): _q.css('::attr(href)').get()}
+                    #_q.css('::text').get(): _q.css('::attr(href)').get()}
+                    _q.css('::text').get()
                     for _q in q.css('.tag')
                 ],
             }

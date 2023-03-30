@@ -92,10 +92,10 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
 
+### Flattering JSON to CSV exporter settings
 FEED_EXPORTERS = {
-    'csv': 'exporter.exporters.CsvFlatterItemExporter'
+    'csv': 'exporter.exporters.CsvFlatteringItemExporter'
 }
-
 
 item_schema = {
     'author': {
@@ -103,14 +103,11 @@ item_schema = {
         'name': 'Albert Einstein'
     },
     'tags': [
-        {'change': '/tag/change/page/1/'},
-        {'deep-thoughts': '/tag/deep-thoughts/page/1/'},
-        {'thinking': '/tag/thinking/page/1/'},
-        {'world': '/tag/world/page/1/'}
+        'test',
+        #{'change': '/tag/change/page/1/'},
     ],
-    'text': '“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”'
+    'text': 'some text'
 }
-
 options = {
     "tags": {
         "named": False, "grouped": True
@@ -119,9 +116,13 @@ options = {
 renaming = [
     (r"^author->", ""),
 ]
+flattering_kwargs = {'field_options': options, 'headers_renaming': renaming}}
+
 FEEDS = {
     'items-%(name)s-%(time)s.csv': {
-        'item_export_kwargs': {'item_schema': item_schema, 'flattering_kwargs': {'field_options': options, 'headers_renaming': renaming}},
+        'item_export_kwargs': {
+            'item_schema': item_schema,
+            'flattering_kwargs': flattering_kwargs,
         'format': 'csv',
     }
 }
