@@ -1,1 +1,1 @@
-# flattering-json-to-csv-exporter
+# flattering-exporter
