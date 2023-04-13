@@ -1,10 +1,6 @@
-import csv
 import io
 from flattering import Exporter, StatsCollector
-
-from itemadapter import ItemAdapter
-from scrapy.exporters import BaseItemExporter, CsvItemExporter
-from scrapy.utils.python import to_unicode
+from scrapy.exporters import BaseItemExporter
 
 
 class CsvFlatteringItemExporter(BaseItemExporter):
